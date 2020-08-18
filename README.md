@@ -1,14 +1,14 @@
-# Reverse an Array
+# Shift an Array
 
-opposite all indecies of an array, to achieve reverse items of the array
+to add a variable to sorted array
 
 ## Challenge
 
-To reverse all items of an array
+To compare with all items of an array to put that variable in the right place
 
 ## Approach & Efficiency
 <!--  -->
 
 ## Solution
 
-![img]("https://drive.google.com/file/d/1KgeWXO_67GVhFAJnN0Hdb-2kUZPKCtOO/view?usp=sharing")
+![img]("https://drive.google.com/file/d/1SVpEK23ACMCFUsHZrTDSJUlt-mYJ2Pdp/view?usp=sharing")

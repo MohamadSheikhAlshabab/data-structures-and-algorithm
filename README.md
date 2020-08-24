@@ -1,15 +1,15 @@
-# Linked List
+# ll-insertions
 
-create Linked List
+insert on Linked List
 
 ## Challenge
 
-Big o(1) for insert, Big o(n) for include
+Big o(1) for insert, the worst case scenario is O(n)
 
 ## Approach & Efficiency
 <!--  -->
 
 ## Solution
 
-![img]("https://drive.google.com/file/d/1IbAwkfj7YXXMS4EzS6BaYuEAxhwxfgti/view?usp=sharing")
+![img]("https://drive.google.com/file/d/1zuGJKppUphyNPpqeK_pdYET2ACI2tY70/view?usp=sharing")
 

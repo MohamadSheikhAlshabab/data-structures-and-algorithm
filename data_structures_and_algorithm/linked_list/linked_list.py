@@ -134,6 +134,44 @@ class LinkedList():
         except Exception as error:
             print (f"There is an error in append of LinkList {error}")
 
+    def reverse(self):
+
+        """
+        This method to reverse all nodes,
+        make the last node is first one and 
+        vice versa.
+        """
+        try:
+            prev=None
+            next=None
+            curr= self.head
+            while curr != None:
+                next=curr.next
+                prev = curr
+                curr=next
+                curr.next=prev
+            self.head=prev
+        except Exception as error:
+            print (f"There is an error in append of LinkList {error}")
+        
+            
+
+    def kth_from_end(self,k):
+        """
+        This method to search in linked list if have it value
+        equal to k integer, then return value of index's node 
+        that have it, reference point is the last node in linked list.
+        """
+        try:
+            found=None
+            curr=self.head
+            while curr==k:
+                found=curr
+                curr=curr.next
+            return curr
+        except Exception as error:
+            print (f"There is an error in append of LinkList {error}")
+
 if __name__=="__main__":
     list1= LinkedList()
     list1.insert(12)
@@ -149,3 +187,6 @@ if __name__=="__main__":
     print(list1.toString())
     list1.insert_after(list1.head.next.next,6)
     print(list1.toString())
+    print(list1.reverse())
+    print(list1.kth_from_end(5))
+    

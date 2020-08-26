@@ -1,15 +1,15 @@
-# ll-kth-from-end
+# ll-zip
 
-we should reverse the LinkedList first, then create a method takes one argument to search about it in LinkedList starting from the last node when found it, return the value of that node. 
+we have two linkedlist seprated, our main goal to zip them and produce one linkedlist has the first node of zipped linkedlist equal to the first node of the first linkedlist, and the second node of the zipped linkedlist equal to the first node of the second linkedlist and so on.
 
 ## Challenge
 
-Big o for searching, the worst case scenario is O(n)
+Big o for zipping, the worst case scenario is O(1)
 
 ## Approach & Efficiency
 <!--  -->
 
 ## Solution
 
-![img]("https://drive.google.com/file/d/19it-m7OBk-I7CkmCAM4UTSSiW5oKkhjb/view?usp=sharing")
+![img]("https://drive.google.com/file/d/1K8a8ugAxhq3tdvOU_ekzk17hlkHfx3Lp/view?usp=sharing")
 

@@ -15,6 +15,7 @@ class Stack:
         it has one attribute, it's called top.
         """
         self.top=None
+        self.items=[]
 
     def push(self,value):
         """
@@ -26,11 +27,13 @@ class Stack:
         try:
             if not self.top:
                 self.top=Node(value)
+                self.items.append(self.top.value)
             else:
                 new_node=Node(value)
                 temp=self.top
                 self.top=new_node
                 new_node=temp
+                self.items.append(self.top.value)
         except Exception as error:
             print(f"There is an error in Push of  Stack, {error} ")
 
@@ -40,9 +43,9 @@ class Stack:
         :return: the last item in The Satck.
         """
         try:
-            return f"the last item in The Satck : {self.top.value}"
-        except Exception as error:
-            print(f"There is an error in peek of  Stack, {error} ")
+            return self.top.value
+        except:
+            return ("Empty Stack ")
 
     def pop(self):
         """
@@ -51,16 +54,16 @@ class Stack:
         :return:None
         """
         try:
-            if not self.top:
-                return None
-            else:
-                temp=self.top
-                self.top=self.top.next
-                self.top.next=None
+            # if not self.top:
+            #     return None
+            # else:
+            temp=self.top
+            self.top=self.top.next
+            self.top.next=None
             return ("ddd",temp.value)
 
         except Exception as error:
-            print(f"There is an error in pop of  Stack, {error} ")
+            return("Empty Stack ")
 
     def is_empty(self):
         """
@@ -121,7 +124,7 @@ class Queue:
             self.front=self.front.next
             self.front.next=temp
         except Exception as error:
-            print(f"There is an error in dequeue of  Queue, {error} ")
+            return("Empty Queue ")
         
     def peek(self):
         """
@@ -129,9 +132,9 @@ class Queue:
         :return: the last item in The Queue.
         """
         try:
-            return f"the last item in The Queue :{self.front.value}"
+            return self.front.value
         except Exception as error:
-            print(f"There is an error in peek of  Queue, {error} ")
+            return ("Empty Queue ")
                 
     def is_empty(self):
         """
@@ -140,9 +143,9 @@ class Queue:
         """
         try:
             if not self.front:
-                return f"is the Queue empty : {True}"
+                return True
             else:
-                return f"is the Queue empty : {False}"
+                return False
         except Exception as error:
             print(f"There is an error in is_empty of  Queue, {error} ")
   

@@ -1,10 +1,8 @@
-# ll-zip
-
-we have two linkedlist seprated, our main goal to zip them and produce one linkedlist has the first node of zipped linkedlist equal to the first node of the first linkedlist, and the second node of the zipped linkedlist equal to the first node of the second linkedlist and so on.
+# Stacks and Queues
 
 ## Challenge
 
-Big o for zipping, the worst case scenario is O(1)
+Big o for , the worst case scenario is O(1)
 
 ## Approach & Efficiency
 <!--  -->
@@ -12,4 +10,3 @@ Big o for zipping, the worst case scenario is O(1)
 ## Solution
 
 ![img]("https://drive.google.com/file/d/1K8a8ugAxhq3tdvOU_ekzk17hlkHfx3Lp/view?usp=sharing")
-

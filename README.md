@@ -20,5 +20,4 @@ dequeue: pop or remove the item from the front of the queue.
 
 ## Solution
 
-![img]("https://drive.google.com/file/d/1IbAwkfj7YXXMS4EzS6BaYuEAxhwxfgti/view?usp=sharing")
-
+![img]("https://drive.google.com/file/d/1zuGJKppUphyNPpqeK_pdYET2ACI2tY70/view?usp=sharing")

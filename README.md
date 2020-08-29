@@ -14,11 +14,11 @@ LILO: last in last out means the last item into the stack will pop from it the l
 enqueue: push or append the item to the rear of the queue.
 dequeue: pop or remove the item from the front of the queue.
 
-## Challenge
-
-Big o for , the worst case scenario is O(1)
 
 ## Approach & Efficiency
 <!--  -->
 
 ## Solution
+
+![img]("https://drive.google.com/file/d/1IbAwkfj7YXXMS4EzS6BaYuEAxhwxfgti/view?usp=sharing")
+

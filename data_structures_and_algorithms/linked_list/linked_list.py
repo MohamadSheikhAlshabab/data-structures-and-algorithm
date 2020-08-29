@@ -98,8 +98,6 @@ class LinkedList():
         else:
             return None
 
-
-
 if __name__=="__main__":
     list1= LinkedList()
     list1.insert(12)

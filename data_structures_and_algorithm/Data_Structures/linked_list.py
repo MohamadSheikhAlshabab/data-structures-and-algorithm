@@ -168,6 +168,29 @@ class LinkedList():
         except Exception as error:
             print (f"There is an error in insert_after of LinkList {error}")
 
+    def reverse_list(self):
+        prev = None
+        cure = self.head
+        while cure:
+            nxt = cure.next
+            cure.next=prev
+            prev = cure
+            cure = nxt
+        self.head = prev
+
+    def kth_from_end(self,index):
+        elements = []
+        current = self.head
+        while current:
+            elements.append(current.value)
+            current = current.next
+        if index > len(elements) or index <= -1:
+            return f"{index} is not in the range of the list"
+        elif index == len(elements):
+            return elements[index-1]
+        elements.reverse()
+        return elements[index]
+
 if __name__=="__main__":
     list1= LinkedList()
     list1.insert(12)
@@ -207,3 +230,21 @@ if __name__=="__main__":
     list5.to_string()
     list5.insert_after(3,5)
     list5.to_string()
+
+    list6 = LinkedList()
+    list6.insert(1)
+    list6.insert(2)
+    list6.insert(3)
+    list6.insert(4)
+    list6.insert(5)
+    print(list6.to_string())
+    print(list6.kth_from_end(1))
+
+    list7 = LinkedList()
+    list7.insert(1)
+    list7.insert(2)
+    list7.insert(3)
+    list7.insert(4)
+    list7.insert(5)
+    print(list7.to_string())
+    print(list7.kth_from_end(10))

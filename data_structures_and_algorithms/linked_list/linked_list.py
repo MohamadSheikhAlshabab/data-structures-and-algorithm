@@ -41,42 +41,63 @@ class LinkedList():
                 self.head=new_node
             else:
                 current=self.head
-                while current.next != None:
+                while current.next:
                     current=current.next
                 current.next=new_node
-
+            print( new_node.value)
+            return( new_node.value)
         except Exception as error:
             print (f"There is error in __init__ of LinkedList, the error {error}")
 
-    def includes(self,text,key):
+    def includes(self,value):
         """
         This is includes method of LinkedList,
         to return boolean text if value exist in
         LinkedList or not.
         """
         try:
-            if not text:
-                return False
-            if text.value==key:
-                return True
-            return self.includes(text.next,key)
+            current = self.head
+            while current.next != None:
+                if current.value == value:
+                    return True
+                else:
+                    current = current.next
+                    return False
         except Exception as error:
             print (f"There is error in __init__ of LinkedList, the error {error}")
 
-    def toString(self):
+    def to_string(self):
         """
         This is toString method of LinkedList,
         to return all values as string.
         """
         try:
-            current=self.head
-            output=[]
-            while not current:
+            items = " "
+            current = self.head
+            while current:
+                items += f"{ {current.value} }->"
                 current=current.next
-                output.append(current.value)
-            print (output)
+            items+="NULL"
+            print (items)
+            return items
+            #     items.append(current.value)
+            #     current = current.next
+            # print(''.join(f"{ {k[1]} }->" for k in enumerate(items))+'NULL')
+            # return(''.join(f"{ {k[1]} }->" for k in enumerate(items))+'NULL')
         except Exception as error:
             print (f"There is error in __init__ of LinkedList, the error {error}")
+    
+    def items(self):
+        sum=1
+        current=self.head
+        if current:
+            while current.next:
+                sum+=1
+                current=current.next
+            return sum
+        else:
+            return None
+
 
 
 if __name__=="__main__":
@@ -84,9 +105,9 @@ if __name__=="__main__":
     list1.insert(12)
     list1.insert(5)
     list1.insert(7)
-    list1.insert(99)
-    print(list1)
-    print(list1.includes("12",12),"1111")
-    print(list1.includes("99",99),"222222")
-    list1.toString()
-    print(list1)
+    list1.insert(990)
+    # print(list1.to_string())
+    print(list1.includes(12))
+    print(list1.includes(99))
+    list1.to_string()
+    # print(list1)

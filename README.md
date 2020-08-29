@@ -12,4 +12,3 @@ Big o(1) for insert, the worst case scenario is O(n)
 ## Solution
 
 ![img]("https://drive.google.com/file/d/1zuGJKppUphyNPpqeK_pdYET2ACI2tY70/view?usp=sharing")
-

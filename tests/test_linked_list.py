@@ -1,43 +1,62 @@
-from data_structures_and_algorithm.linked_list.linked_list import ( LinkedList,Node,)
+from data_structures_and_algorithm.linked_list.linked_list import LinkedList,Node
 
-def test_kth_from_end_2():
-    list1 = LinkedList()
-    list1.append('1')
-    list1.append('2')
-    list1.append('3')
-    assert list1.kth_from_end(1) == '2'
 
-def test_kth_from_end_1():
-    list1 = LinkedList()
-    list1.append('1')
-    list1.append('2')
-    list1.append('3')
-    assert list1.kth_from_end(0) == '1'
+def test_empty_list():
+    ll = LinkedList()
+    assert ll.head == None
 
-def test_reverse_1():
-    list1 = LinkedList()
-    list1.append('1')
-    list1.append('2')
-    list1.append('3')
-    assert list1.reverse() == '1'
+# def test_head():
+#     ll = LinkedList()
+#     ll.append_value(5)
+#     ll.append_value(10)
+#     assert ll.head == 5
 
-def test_reverse_2():
-    list1 = LinkedList()
-    list1.append('1')
-    list1.append('2')
-    list1.append('3')
-    assert list1.reverse() == '3'
+def test_insert_to_empty_ll():
+    ll = LinkedList()
+    ll.insert(5)
+    assert ll.head.value == 5
 
-def test_reverse_3():
-    list1 = LinkedList()
-    list1.append('1')
-    list1.append('2')
-    list1.append('3')
-    assert list1.reverse() == '2'
+def test_multiple_insert():
+    ll = LinkedList()
+    ll.insert(5)
+    ll.insert(6)
+    ll.insert(7)
+    assert ll.to_string() == 'head-> {5}->{6}->{7}->NULL'
 
-def test_kth_from_end_3():
-    list1 = LinkedList()
-    list1.append('1')
-    list1.append('2')
-    list1.append('3')
-    assert list1.kth_from_end(2) == '3'
+def test_includes():
+    ll = LinkedList()
+    ll.insert(5)
+    ll.append_value(55)
+    assert ll.includes(5) == True
+
+def test_includes_false():
+    ll = LinkedList()
+    ll.insert(5)
+    ll.insert(77)
+    ll.insert(75)
+    assert ll.includes(6) == False
+
+def test_dender_str():
+    ll = LinkedList()
+    ll.insert(5)
+    ll.insert(6)
+    ll.insert(7)
+    assert ll.to_string() == 'head-> {5}->{6}->{7}->NULL'
+
+def test_insert_before():
+    ll = LinkedList()
+    ll.insert(5)
+    ll.insert(6)
+    ll.insert(8)
+    ll.insert(9)
+    ll.insert_before(6,7)
+    assert ll.to_string() == 'head-> {5}->{7}->{6}->{8}->{9}->NULL'
+
+def test_insert_after():
+    ll = LinkedList()
+    ll.insert(5)
+    ll.insert(6)
+    ll.insert(8)
+    ll.insert(9)
+    ll.insert_after(8,7)
+    assert ll.to_string() == 'head-> {5}->{6}->{8}->{7}->{9}->NULL'

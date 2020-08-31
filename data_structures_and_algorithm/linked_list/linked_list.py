@@ -56,34 +56,32 @@ class LinkedList():
         LinkedList or not.
         """
         try:
-            current = self.head
-            while current.next != None:
-                if current.value == value:
+
+            current_node = self.head
+            while current_node.next != None:
+                if current_node.value == value:
                     return True
                 else:
-                    current = current.next
-                    return False
+                    current_node = current_node.next
+            return False
+
         except Exception as error:
             print (f"There is error in __init__ of LinkedList, the error {error}")
 
     def to_string(self):
         """
-        This is toString method of LinkedList,
+        This is to_string method of LinkedList,
         to return all values as string.
         """
         try:
-            items = " "
-            current = self.head
+
+            current=self.head
+            output=[]
             while current:
-                items += f"{ {current.value}}->"
+                output.append(current.value)
                 current=current.next
-            items=f"head->{items}NULL"
-            print (items)
-            return items
-            #     items.append(current.value)
-            #     current = current.next
-            # print(''.join(f"{ {k[1]} }->" for k in enumerate(items))+'NULL')
-            # return(''.join(f"{ {k[1]} }->" for k in enumerate(items))+'NULL')
+            return output
+
         except Exception as error:
             print (f"There is error in __init__ of LinkedList, the error {error}")
     
@@ -117,16 +115,22 @@ class LinkedList():
         to add a value before the specific node.
         """
         try:
-            new_node = Node(value)
-            current = self.head
-            if not self.head:
-                self.head = new_node
-            else:
-                if self.head.value == next_node:
-                    temp = self.head
-                    self.head = new_node
-                    new_node.next = temp
-                    return 
+
+            if next_node == None:
+                print("Doesn't exist")
+            new_node=Node(value)
+            current=self.head
+            if next_node==current:
+                new_node=Node(value)
+                new_node.next=self.head
+                self.head=new_node
+                return
+            while current:
+                if current.next==next_node:
+                    next_node.next=current.next
+                    current.next=new_node
+                    return
+
                 else:
                     current = self.head
                 while current.next != None:
@@ -139,7 +143,9 @@ class LinkedList():
                         current = current.next
                 return "doesn't exist"
         except Exception as error:
-            print (f"There is an error in insert_before of LinkList {error}")
+
+            print (f"There is an error in append of LinkList {error}")
+        
 
     def insert_after(self,pre_node,value):
         """
@@ -147,23 +153,14 @@ class LinkedList():
         to add a value after the specific node.
         """
         try:
-            new_node = Node(value)
-            current = self.head
-            if not self.head:
-                    self.head = new_node
-            else:
-                current = self.head
-                while current.next:
-                    if current.next.value == pre_node:
-                        current = current.next
-                        temp = current.next
-                        current.next = new_node
-                        new_node.next = temp
-                        return 
-                    else:
-                        current = current.next
-                        
-                return "doesn't exist!"
+
+            if pre_node==None:
+                print("doesn't exist")
+                return
+            new_node=Node(value)
+            new_node.next=pre_node.next
+            pre_node.next=new_node
+
 
         except Exception as error:
             print (f"There is an error in insert_after of LinkList {error}")
@@ -179,7 +176,7 @@ class LinkedList():
             prev=None
             next=None
             curr= self.head
-            while curr != None:
+            while curr == None:
                 next=curr.next
                 prev = curr
                 curr=next
@@ -209,42 +206,25 @@ class LinkedList():
 if __name__=="__main__":
     list1= LinkedList()
     list1.insert(12)
+    # print(list1.to_string,"qqqq")
     list1.insert(5)
+    # print(list1,"qqqqq")
     list1.insert(7)
 
-    list1.append_value(8)
-    list1.insert(990)
-    print(list1.includes(12))
-    print(list1.includes(99))
+    # print(list1)
+    list1.insert(99)
+    # print(list1)
     list1.to_string()
-
-    list2= LinkedList()
-    list2.insert(1)
-    list2.insert(3)
-    list2.insert(2)
-    list2.to_string()
-    list2.append_value(5)
-    list2.to_string()
-
-    list3= LinkedList()
-    list3.to_string()
-    list3.insert(1)
-    list3.to_string()
-
-    list4= LinkedList()
-    list4.insert(1)
-    list4.insert(3)
-    list4.insert(2)
-    list4.to_string()
-    list4.insert_before(3,5)
-    list4.to_string()
-
-    list5= LinkedList()
-    list5.insert(1)
-    list5.insert(3)
-    list5.insert(2)
-    list5.to_string()
-    list5.insert_after(3,5)
-    list5.to_string()
-
+    print(list1)
+    list1.insert_before(list1.head.next,'15')
+    print(list1.to_string())
+    list1.insert_after(list1.head.next.next,6)
+    print(list1.includes(5))
+    print(list1.includes(66))
+    print(list1.to_string())
+    print(list1.reverse())
+    print(list1.to_string())
+    print(list1.kth_from_end(5))
+    print(list1.to_string())
+    
 

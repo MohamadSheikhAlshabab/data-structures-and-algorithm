@@ -1,15 +1,11 @@
-# queue_with_stacks
-
-we create queue wih two stacks
+# Trees
+<!-- Short summary or background information -->
 
 ## Challenge
-
-Big o for enqueue and dequeue, the worst case scenario is O(1)
+<!-- Description of the challenge -->
 
 ## Approach & Efficiency
-<!--  -->
+<!-- What approach did you take? Why? What is the Big O space/time for this approach? -->
 
-## Solution
-
-![img]("https://drive.google.com/file/d/1Pp2rMgdv5Msj8cw3WMsIOss8SeBLF3Zl/view?usp=sharing")
-
+## API
+<!-- Description of each method publicly available in each of your trees -->

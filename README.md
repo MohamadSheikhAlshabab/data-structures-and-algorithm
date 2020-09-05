@@ -1,22 +1,35 @@
 
-# queue_with_stacks
+# Trees
 
-we create queue wih two stacks
-
-
-Queue: is a built-in data structure to store items.
-has two types to store items inside it:
-FIFO: first in first out means the first item into the stack will pop from it the first one.
-LILO: last in last out means the last item into the stack will pop from it the last one.
-enqueue: push or append the item to the rear of the queue.
-dequeue: pop or remove the item from the front of the queue.
+- the binary tree is a tree dtat structure each node has most two children.
+which referes to as the left and the right child.
+- from the root to the leaf(the last child in the tree has not any child), it's called the depth.
+- from the leaf to the root(the first node in the tree has not any parent), it's called the height.
 
 
-Big o for enqueue and dequeue, the worst case scenario is O(1)
+## Challenge
+
+implement the binary tree using classes and Data strcuture.
+like that:
+
+                5
+               /  \
+              3    9
+             / \    \
+            1   4    10
 
 ## Approach & Efficiency
-<!--  -->
 
-## Solution
+the worst case scenario for space, access, search, insertion, and deletion, it's O(n).
 
-![img]("https://drive.google.com/file/d/1Pp2rMgdv5Msj8cw3WMsIOss8SeBLF3Zl/view?usp=sharing")
+## API
+
+pre_order method : present the the tree :this is the first mode of depth of tree,fill the tree starting from :
+         ROOT -->> LEFT -->> RIGHT.
+         
+in_order method : present the the tree :this is the second mode of depth of tree,fill the tree starting from :
+         LEFT -->> ROOT -->> RIGHT.
+     
+post_order method : present the the tree :this is the third mode of depth of tree,fill the tree starting from :
+         LEFT -->>  RIGHT -->> ROOT.
+

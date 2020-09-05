@@ -41,10 +41,11 @@ class LinkedList():
                 self.head=new_node
             else:
                 current=self.head
-                while current.next != None:
+                while current.next:
                     current=current.next
                 current.next=new_node
-
+            print( new_node.value)
+            return( new_node.value)
         except Exception as error:
             print (f"There is error in __init__ of LinkedList, the error {error}")
 
@@ -55,6 +56,7 @@ class LinkedList():
         LinkedList or not.
         """
         try:
+
             current_node = self.head
             while current_node.next != None:
                 if current_node.value == value:
@@ -62,6 +64,7 @@ class LinkedList():
                 else:
                     current_node = current_node.next
             return False
+
         except Exception as error:
             print (f"There is error in __init__ of LinkedList, the error {error}")
 
@@ -71,39 +74,48 @@ class LinkedList():
         to return all values as string.
         """
         try:
+
             current=self.head
             output=[]
             while current:
                 output.append(current.value)
                 current=current.next
             return output
+
         except Exception as error:
             print (f"There is error in __init__ of LinkedList, the error {error}")
     
-    def append(self,value):
-        """
-        This is append method of LinkedList,
-        to add all values for LinkeList.
-        """
-        try:
-            new_node=Node(value)
-            if self.head==None:
-                self.head=new_node
-            else:
-                current=self.head
-                while current.next != None:
-                    current=current.next
-                current.next=new_node
+    def items(self):
+        sum=1
+        current=self.head
+        if current:
+            while current.next:
+                sum+=1
+                current=current.next
+            return sum
+        else:
+            return None
 
-        except Exception as error:
-            print (f"There is an error in append of LinkList {error}")
-        
-    def insert_before(self,next_node,new_val):
+    def append_value(self, value):
         """
         This is append method of LinkedList,
-        to add all values before the first node.
+        to add a values at the end of the LinkedList.
+        """
+        new_node = Node(value)
+        if not self.head :
+            self.head = new_node
+        current = self.head
+        while current.next:
+            current = current.next
+        current.next = new_node
+
+    def insert_before(self,next_node,value):
+        """
+        This is insert_before method of LinkedList,
+        to add a value before the specific node.
         """
         try:
+
             if next_node == None:
                 print("Doesn't exist")
             new_node=Node(value)
@@ -118,17 +130,30 @@ class LinkedList():
                     next_node.next=current.next
                     current.next=new_node
                     return
+
                 else:
-                    current=current.next
+                    current = self.head
+                while current.next != None:
+                    if current.next.value == next_node:
+                        temp = current.next
+                        current.next = new_node
+                        new_node.next = temp
+                        return 
+                    else:
+                        current = current.next
+                return "doesn't exist"
         except Exception as error:
+
             print (f"There is an error in append of LinkList {error}")
         
+
     def insert_after(self,pre_node,value):
         """
-        This is append method of LinkedList,
-        to add all values after the first node.
+        This is insert_after method of LinkedList,
+        to add a value after the specific node.
         """
         try:
+
             if pre_node==None:
                 print("doesn't exist")
                 return
@@ -136,8 +161,9 @@ class LinkedList():
             new_node.next=pre_node.next
             pre_node.next=new_node
 
+
         except Exception as error:
-            print (f"There is an error in append of LinkList {error}")
+            print (f"There is an error in insert_after of LinkList {error}")
 
     def reverse(self):
 
@@ -184,6 +210,7 @@ if __name__=="__main__":
     list1.insert(5)
     # print(list1,"qqqqq")
     list1.insert(7)
+
     # print(list1)
     list1.insert(99)
     # print(list1)
@@ -200,3 +227,4 @@ if __name__=="__main__":
     print(list1.kth_from_end(5))
     print(list1.to_string())
     
+

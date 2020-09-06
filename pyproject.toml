@@ -6,6 +6,7 @@ authors = ["MohamadSheikhAlshabab <alshabab.moh@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
+nltk = "^3.5"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"

@@ -231,4 +231,3 @@ if __name__ == "__main__":
 
     print(tree.find_maximum_value(tree.root))
     print(tree.breadth_first_traversal(tree.root))
- 

@@ -1,8 +1,88 @@
+from collections import defaultdict
 class Node:
     def __init__(self,value):
         self.value=value
         self.right=None
         self.left=None
+    
+class Queue:
+    def __init__(self):
+        """
+        This is initial method of class Queue,
+        it has one attribute called front. 
+        """
+        self.elements=[]
+
+    def enqueue(self,value):
+        """
+        This is enqueue method of class Queue,
+        it has two attribute, they're called new_node, temp.
+        push method use to add an item to the Queue.
+        :return: None
+        """
+        try:
+            self.elements.insert(0,value)
+        except Exception as error:
+            print(f"There is an error in enqueue of  Queue, {error} ")
+        
+    def dequeue(self):
+        """
+        This is dequeue method of class Queue,
+        it has one attribute, it's called value.
+        dequeue method use to pop an item from the front of Queue.
+        :return: None
+        """
+        try:
+            if not self.is_empty():
+                return self.elements.pop()
+        except Exception as error:
+            return("Empty Queue ")
+        
+    def peek(self):
+        """
+        This is peek method of class Queue,
+        :return: the last item in The Queue.
+        """
+        try:
+            if not self.is_empty():
+                return self.elements[-1].value
+        except Exception as error:
+            return ("Empty Queue ")
+                
+    def is_empty(self):
+        """
+        This is is_empty method of class Queue,
+        :return: Boolean, if Queue empty retrun True, else return False.
+        """
+        try:
+           return len(self.elements) ==0
+        except Exception as error:
+            print(f"There is an error in is_empty of  Queue, {error} ")
+
+    def __len__(self):
+        """
+        This is len method of class Queue.
+        :return: len of the queue
+        """
+        return self.size()
+
+    def size(self):
+        """
+        This is size method of class Queue.
+        :return: size of the queue
+        """
+        return len(self.elements)
+  
+    def __str__(self):
+        """
+        This is str method of class Queue.
+        :return: string
+        """
+        output=""
+        while self.front:
+            output+= f"-> {self.front.value} ->"
+            self.front=self.front.next
+        return f"Front {output}  None"
 
 class Binary_Tree:
     def __init__(self,root):
@@ -113,6 +193,25 @@ class Binary_Tree:
         except Exception as error:
             print(f"There is error in find amximum value :{error}")
 
+    def  breadth_first_traversal(self,root_value):
+        """
+        This is breadth_first_traversal method to travesal in the binary tree through
+        breadth (level by level).
+        Return: a list begin from the root, end up with the last right child in the last level.
+        """
+        breadth = []
+        if root_value :
+            queue = Queue()
+            queue.enqueue(root_value)
+            while len(queue)>0:
+                breadth.append(queue.peek())
+                temp = queue.dequeue()
+                if temp.left:
+                    queue.enqueue(temp.left)
+                if temp.right:
+                    queue.enqueue(temp.right)
+        return breadth
+
 
 if __name__ == "__main__":
     tree = Binary_Tree(2)
@@ -131,4 +230,4 @@ if __name__ == "__main__":
     print("post_order",tree.contains("post_order"))
 
     print(tree.find_maximum_value(tree.root))
- 
+    print(tree.breadth_first_traversal(tree.root))

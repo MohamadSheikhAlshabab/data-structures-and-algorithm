@@ -95,3 +95,29 @@ def test_no_direct_path2(g2):
 def test_city_not_in_graph(g2):
     graph = g2
     assert g2.get_trip(graph, ['Metroville', 'Pandora']) == 'False, $0'
+
+
+def test_returning_the_correct_path():
+    g=Graph()
+    graph2 = {"A": ["B", "C",'G','D',"E",'H',"F"],
+            "B": ['C','G'],
+            "C": ["G"],
+            "D": ['E','H','F'],
+            "E": ["D"],
+            "F": ['H'],
+            "H": ["D"],
+            "G":["C"],
+            }
+    path = g.dfs(graph2, "A")
+    output=",".join(path)
+    print(output)
+    actual = path
+    expected = ['A','B','C','G','D','E','H','F']
+    assert actual == expected
+
+def test_pasing_empty_graph():
+    g=Graph()
+    g2={}
+    actual = g.dfs(g2,'A',path=[])
+    expected = ['A']
+    assert expected == actual

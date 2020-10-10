@@ -94,6 +94,15 @@ class Graph:
                 return 'False, $0'
             cost += direct_path[cities[city+1]]
         return f'True, ${cost}'
+
+    def dfs(self,graph, source, path=[]):
+        if source not in path:
+            path.append(source)
+            if source not in graph:
+                return path
+            for neighbor in graph[source]:
+                path = self.dfs(graph, neighbor, path)
+        return path
     
 if __name__ == "__main__":
     g = Graph()
@@ -139,3 +148,17 @@ if __name__ == "__main__":
     print( g2.get_trip(g2, ['Metroville', 'Narnia']))
     print( g2.get_trip(g2,['Naboo', 'Pandora']))
     print( g2.get_trip(g2,['Naboo', 'Arendelle','Pandora']))
+
+    graph2 = {"A": ["B", "C",'G','D',"E",'H',"F"],
+                "B": ['C','G'],
+                "C": ["G"],
+                "D": ['E','H','F'],
+                "E": ["D"],
+                "F": ['H'],
+                "H": ["D"],
+                "G":["C"],
+                }
+
+    path = g.dfs(graph2, "A")
+    output=",".join(path)
+    print(output)

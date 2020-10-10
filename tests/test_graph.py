@@ -1,6 +1,32 @@
 from graph.graph import Graph , Node
 import pytest
 
+@pytest.fixture
+def g2():
+    g2 = Graph()
+
+    g2.add_node("Pandora")
+    g2.add_node("Metroville")
+    g2.add_node("Arendelle")
+    g2.add_node("Monstropolis")
+    g2.add_node("Narnia")
+    g2.add_node("Naboo")
+
+    g2.add_edge('Pandora', 'Arendelle', 150)
+    g2.add_edge('Pandora', 'Metroville', 82)
+
+    g2.add_edge('Arendelle', 'Metroville', 99)
+    g2.add_edge('Arendelle', 'Monstropolis', 42)
+
+    g2.add_edge('Metroville', 'Monstropolis', 105)
+    g2.add_edge('Metroville', 'Narnia', 37)
+    g2.add_edge('Metroville', 'Naboo', 26)
+
+    g2.add_edge('Naboo', 'Narnia', 250)
+    g2.add_edge('Naboo', 'Monstropolis', 73)
+
+    return g2
+
 def test_graph_size():
     g = Graph()
 
@@ -47,3 +73,25 @@ def test_breadth_first_start_from_end():
          'F': set(['A', 'C', 'E'])}
 
     assert g.bfs(graph,'A') == {'E', 'A', 'D', 'B', 'F', 'C'}
+
+def test_trip_1(g2):
+    graph = g2
+    assert g2.get_trip(graph, ['Metroville', 'Narnia']) == 'True, $37'
+
+
+def test_trip_2(g2):
+    graph = g2
+    assert g2.get_trip(graph, ['Metroville', 'Monstropolis', ]) == 'True, $105'
+
+def test_no_direct_path1(g2):
+    graph = g2
+    assert g2.get_trip(graph, ['Naboo', 'Pandora']) == 'False, $0'
+
+def test_no_direct_path2(g2):
+    graph = g2
+    assert g2.get_trip(graph, ['Naboo', 'Arendelle','Pandora']) == 'False, $0'
+
+
+def test_city_not_in_graph(g2):
+    graph = g2
+    assert g2.get_trip(graph, ['Metroville', 'Pandora']) == 'False, $0'

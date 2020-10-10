@@ -1,21 +1,15 @@
 from graph.graph import Graph , Node
+import pytest
 
 def test_graph_size():
     g = Graph()
-    # print(g._adjacency_list)
+
     g.add_node('10')
     g.add_node('5')
     g.add_node('9')
     g.add_node('44')
-    g.add_edge('10', '5', 3)
-    g.add_edge('10', '10', 6)
-    g.add_edge('5', '44', 2)
-    g.add_edge('44', '9', 4)
-    g.add_edge('44', '10', 1)
-    g.add_edge('5', '10', 7)
-    g.add_edge('9', '10', 8)
-    # g.get_neighbors('5')
-    actual = print(g.size())
+
+    actual = g.size()
     expected = 4
     assert actual == expected
 
@@ -26,32 +20,30 @@ def test_graph_adjacency_list():
     g.add_node('5')
     g.add_node('9')
     g.add_node('44')
-    g.add_edge('10', '5', 3)
-    g.add_edge('10', '10', 6)
-    g.add_edge('5', '44', 2)
-    g.add_edge('44', '9', 4)
-    g.add_edge('44', '10', 1)
-    g.add_edge('5', '10', 7)
-    g.add_edge('9', '10', 8)
-    # g.get_neighbors('5')
-    actual = print(g._adjacency_list)
-    expected = {'10': [['5', 3], ['10', 6]], '5': [['44', 2], ['10', 7]], '9': [['10', 8]], '44': [['9', 4], ['10', 1]]}
+
+    actual = list(g._adjacency_list)
+    expected = ['10', '5', '9', '44']
+
     assert actual == expected
 
-# def test_graph():
-#     g = Graph()
-#     print(g._adjacency_list)
+def test_breadth_first_not_in_graph():
+    g = Graph()
+    graph = {'A': set(['99', '90', '100']),}
 
-#     actual = 
-#     expected = 
+    g.add_node('99')
+    g.add_node('90')
+    g.add_node('100')
 
-#     assert actual == expected
+    with pytest.raises(KeyError):
+        g.bfs(graph,'101')  
 
-# def test_graph():
-#     g = Graph()
-#     print(g._adjacency_list)
+def test_breadth_first_start_from_end():
+    g = Graph()
+    graph = {'A': set(['B', 'C', 'F']),
+         'B': set(['A', 'D', 'E']),
+         'C': set(['A', 'F']),
+         'D': set(['B']),
+         'E': set(['B', 'F']),
+         'F': set(['A', 'C', 'E'])}
 
-#     actual = 
-#     expected = 
-
-#     assert actual == expected
+    assert g.bfs(graph,'A') == {'E', 'A', 'D', 'B', 'F', 'C'}

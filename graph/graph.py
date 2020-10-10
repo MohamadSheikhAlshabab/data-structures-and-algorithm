@@ -68,8 +68,25 @@ class Graph:
         except Exception as err:
             print(f"There is an error in size as {err}")
 
+    def bfs(self,graph, start):
+        visited, queue = set(), [start]
+        while queue:
+            node = queue.pop(0)
+            if node not in visited:
+                visited.add(node)
+                for nextNode in graph[node]:
+                    if nextNode not in visited:
+                        queue.append(nextNode)
+        return visited
+
 if __name__ == "__main__":
     g = Graph()
+    graph = {'A': set(['B', 'C', 'F']),
+         'B': set(['A', 'D', 'E']),
+         'C': set(['A', 'F']),
+         'D': set(['B']),
+         'E': set(['B', 'F']),
+         'F': set(['A', 'C', 'E'])}
     print(g._adjacency_list)
     g.add_node('10')
     g.add_node('5')
@@ -84,3 +101,4 @@ if __name__ == "__main__":
     g.add_edge('9', '10', 8)
     g.get_neighbors('5')
     print(g.size())
+    print(g.bfs(graph,'A'))
